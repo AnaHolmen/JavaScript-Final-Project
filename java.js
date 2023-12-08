@@ -1,4 +1,11 @@
+// //Deal 26 Cards to each Player from a Deck of 52 cards.
+// Iterate through the turns where each Player plays a Card.
+// The Player who played the higher card is awarded a point.
+// Ties result in zero points for both Players.
+// After all cards have been played, display the score and declare the winner.
+
 class Deck {
+  //Deck class and creating the suits and ranks for the cards//
   constructor() {
     this.suits = ["hearts", "Spades", "Diamonds", "clubs"];
     this.ranks = [
@@ -20,6 +27,7 @@ class Deck {
 
     for (let i = 0; i < this.suits.length; i++) {
       for (let x = 0; x < this.ranks.length; x++) {
+        // Four loop for rank and length and to compare rank to suit//
         let card = {
           suit: this.suits[i],
           rank: this.ranks[x],
@@ -44,10 +52,10 @@ const myDeck = new Deck();
 myDeck.shuffle(); // Shuffle the cards within the deck
 console.log(myDeck.cards);
 
-let player1 = myDeck.cards.slice(26, 52); // split the deck bettween players//
+let player1 = myDeck.cards.slice(26, 52); // Split the deck between players//
 let player2 = myDeck.cards.slice(0, 26);
 
-let p1Score = 0; //players scores and handwinner//
+let p1Score = 0; //Players scores and handwinner//
 let p2Score = 0;
 let handWinners = [];
 
@@ -55,7 +63,7 @@ console.log(player2);
 console.log(player1);
 
 for (let i = 0; i < 26; i++) {
-  //
+  //  Four loop to show player 1 and player 2 scores and heandwinner plus if their a tie, no point awarded//
   if (player1[i].value > player2[i].value) {
     p1Score += 1;
     handWinners.push("player 1");
@@ -70,9 +78,10 @@ for (let i = 0; i < 26; i++) {
   }
 }
 
-let overallWinner = ""; // how to determine the overall winner//
+let overallWinner = ""; // How to determine the overall winner//
 if (p1Score > p2Score) {
   overallWinner = "Player 1";
+  handWinners.push("player 1");
   console.log("Overall Winner: Player 1");
 } else if (p1Score < p2Score) {
   overallWinner = "Player 2";
@@ -82,7 +91,7 @@ if (p1Score > p2Score) {
   console.log("Overall Result: TIE");
 }
 
-console.log("Player 1 Score:", p1Score); // making the score, handwinner and overall winner//
+console.log("Player 1 Score:", p1Score); // Making the score for each player, handwinner and overall winner//
 console.log("Player 2 Score:", p2Score);
 console.log("Hand Winners:", handWinners);
 console.log("Overall Winner:", overallWinner);
